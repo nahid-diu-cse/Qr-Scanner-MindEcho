@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:qr_scanner_mindecho/view/home_qr_view/home_qr_view.dart';
-import 'package:qr_scanner_mindecho/view/home_view/scan_from_gallery_controller.dart';
+import 'package:qr_scanner_mindecho/view/home_view/home_qr_view.dart';
+import 'package:qr_scanner_mindecho/view/home_view/generate_qr_view.dart';
+import 'package:qr_scanner_mindecho/view_model/controller/home_view_model_controller/scan_from_gallery_controller.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -14,7 +15,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final controller = Get.put(ScanFromGalleryController());
-  int currentTab = -1;
+  int currentTab = 0;
 
   final PageStorageBucket bucket = PageStorageBucket();
   Widget currentScreen = const HomeQRView();
@@ -43,12 +44,12 @@ class _HomeViewState extends State<HomeView> {
                   children: [
                     Icon(
                       FontAwesomeIcons.images,
-                      color: currentTab == 0 ? Colors.blue : Colors.grey,
+                      color: currentTab == 0 ? Colors.blueGrey : Colors.grey,
                     ),
                     Text(
                       'Gallery',
                       style: TextStyle(
-                        color: currentTab == 0 ? Colors.blue : Colors.grey,
+                        color: currentTab == 0 ? Colors.blueGrey : Colors.grey,
                       ),
                     )
                   ],
@@ -59,7 +60,7 @@ class _HomeViewState extends State<HomeView> {
                 minWidth: 40,
                 onPressed: () {
                   setState(() {
-                    //currentScreen = const ScanFromGallery();
+                    currentScreen = const GenerateQrView();
                     currentTab = 1;
                   });
                 },
@@ -68,12 +69,12 @@ class _HomeViewState extends State<HomeView> {
                   children: [
                     Icon(
                       FontAwesomeIcons.qrcode,
-                      color: currentTab == 1 ? Colors.blue : Colors.grey,
+                      color: currentTab == 1 ? Colors.blueGrey : Colors.grey,
                     ),
                     Text(
                       'Generate',
                       style: TextStyle(
-                        color: currentTab == 1 ? Colors.blue : Colors.grey,
+                        color: currentTab == 1 ? Colors.blueGrey : Colors.grey,
                       ),
                     )
                   ],
@@ -101,3 +102,4 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 }
+

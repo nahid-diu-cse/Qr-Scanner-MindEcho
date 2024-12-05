@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
@@ -19,10 +18,10 @@ class ScanFromGalleryController extends GetxController {
           await _controller.analyzeImage(image.path);
       final Barcode? result =
           capture?.barcodes.isNotEmpty == true ? capture!.barcodes.first : null;
-      qrCodeResult =
-          (result?.rawValue ?? "No QR code found in the image.") as RxString?;
+      qrCodeResult?.value =
+          (result?.rawValue ?? "No QR code found in the image.");
     } catch (e) {
-      qrCodeResult = "Failed to scan QR code: $e" as RxString?;
+      qrCodeResult?.value = "Failed to scan QR code: $e";
     }
   }
 

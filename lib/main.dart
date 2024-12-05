@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:qr_scanner_mindecho/view/home_qr_view/home_qr_view.dart';
 import 'package:qr_scanner_mindecho/view/home_view/home_view.dart';
 
 void main() {
